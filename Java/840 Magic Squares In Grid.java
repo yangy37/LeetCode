@@ -1,7 +1,6 @@
 class Solution {
     int count=0;
-    public int numMagicSquaresInside(int[][] grid) 
-    {
+    public int numMagicSquaresInside(int[][] grid) {
         for(int i=0;i<grid.length-2;i++){
             for(int j=0;j<grid[0].length-2;j++){
                 if(check(i,j,grid))count++;
@@ -9,7 +8,7 @@ class Solution {
         }return count;
         
     }
-    private boolean check(int i, int j, int[][] grid){
+    private boolean check(int i, int j, int[][] grid) {
         int[] temp = new int[10];
          for (int k = i; k < i + 3; k++) {
             for (int l = j; l < j + 3; l++) {
