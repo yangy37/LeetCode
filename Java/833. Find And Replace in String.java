@@ -6,21 +6,21 @@ class Solution {
         StringBuilder sb=new StringBuilder();
         for(i=0;i<index.length;i++)
         {
-            if(S.substring(index[i],index[i]+sources[i].length()).equals(sources[i])){
-				mp.put(index[i],i);
-			}
+		if(S.substring(index[i],index[i]+sources[i].length()).equals(sources[i])){
+			mp.put(index[i],i);
+		}
         }
         for(i=0;i<S.length();i++)
         {
-            if(mp.containsKey(i))
-            {
-                sb.append(targets[mp.get(i)]);
-                i+=sources[mp.get(i)].length()-1;
-            }
-            else
-            {
-                sb.append(S.charAt(i));
-            }
+		if(mp.containsKey(i))
+            	{
+                	sb.append(targets[mp.get(i)]);
+                	i+=sources[mp.get(i)].length()-1;
+            	}
+            	else
+            	{
+                	sb.append(S.charAt(i));
+            	}
         }
         return sb.toString();
     }
