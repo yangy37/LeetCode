@@ -1,10 +1,10 @@
 class Solution {
     public String maskPII(String S) {
         if (S.indexOf("@") != -1) {
-            S=S.toLowerCase();
-			String[] split = S.split("@");
-			String left = split[0];
-			return left.charAt(0) + "*****" + left.charAt(left.length() - 1) + "@" + split[1];
+		S=S.toLowerCase();
+		String[] split = S.split("@");
+		String left = split[0];
+		return left.charAt(0) + "*****" + left.charAt(left.length() - 1) + "@" + split[1];
 		} else {
 			int cnt = 0;
 			StringBuilder sb = new StringBuilder();
