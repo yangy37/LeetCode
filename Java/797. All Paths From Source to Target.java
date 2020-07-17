@@ -7,12 +7,12 @@ class Solution {
         return res;
     }
 	
-    void dfs(int source, List<Integer> curr, int graph[][], int n, List<List<Integer>> res){
+    void dfs(int source, List<Integer> curr, int graph[][], int n, List<List<Integer>> res) {
         if(source == n) {
             res.add(new ArrayList(curr));
             return;
         }
-        for(int a : graph[source]){
+        for(int a : graph[source]) {
             curr.add(a);
             dfs(a, curr, graph, n, res);
             curr.remove(curr.size()-1);
