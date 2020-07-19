@@ -11,6 +11,7 @@ class Solution {
         }
         return true;
     }
+    
     public boolean dfs(int[][] graph, int i, int c) {
         color[i] = c;
         
