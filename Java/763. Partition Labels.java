@@ -1,7 +1,8 @@
 class Solution {
     public List<Integer> partitionLabels(String S) {
-        if(S.length()<=0 || S==null)
+        if(S.length()<=0 || S==null) {
     		return new ArrayList<Integer>();
+        }
     	List<Integer> res= new ArrayList<Integer>();
     	int max=0;
     	int start=0;	
