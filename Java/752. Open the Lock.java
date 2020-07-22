@@ -4,9 +4,11 @@ class Solution {
         for(String s: deadends) {
             d.add(s);
         }
+        
         if(d.contains("0000")) {
             return -1;
         }
+        
         Deque<char[]> q = new ArrayDeque<>();
         q.offer(new char[]{'0', '0', '0', '0'});
         int ans = 0;
