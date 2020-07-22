@@ -30,7 +30,9 @@ class Solution {
     }
     
     private void dfs(List<String> list, int idx, String str, List<String> res) {
-        if(idx >= list.size()) {res.add(str);return;}
+        if(idx >= list.size()) {
+            res.add(str);return;
+        }
         
         String from = list.get(idx);
         if(!map.containsKey(from)) return;
