@@ -1,7 +1,7 @@
 # LeetCode
 Yi Yang's Leetcode Experience 5 question per day~~~
 Good Good Study, Day Day Up
-
+好好学习，天天向上
 07/09/2020 Done
 
 07/10/2020 Done
