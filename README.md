@@ -14,3 +14,5 @@ Good Good Study, Day Day Up
 07/26/2020 Done    07/27/2020 Done    07/28/2020 Done    07/29/2020 Done
 
 07/30/2020 Done    07/31/2020 Done    08/01/2020 Done    08/02/2020 Done
+
+08/03/2020 Done
