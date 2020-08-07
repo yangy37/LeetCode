@@ -1,0 +1,7 @@
+# Write your MySQL query statement below
+Update salary set sex = 
+(case 
+    when sex like 'f' then 'm' 
+    when sex like 'm' then 'f' 
+    else '' 
+ end);
