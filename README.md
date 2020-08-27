@@ -1,5 +1,5 @@
 # LeetCode
-Yi Yang's Leetcode Experience 5 question per day~~~
+Yi Yang's Leetcode Experience 5 question/day~~~
 Good Good Study, Day Day Up
 好好学习，天天向上
 
