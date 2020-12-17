@@ -1,0 +1,32 @@
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        if (bills.length == 0) {
+            return true;
+        }
+        int five = 0; int ten = 0;
+        for (int bill : bills) {
+            if (bill == 5) {
+                five ++;
+            }
+            if (bill == 10) {
+                ten ++;
+                if (five == 0) {
+                    return false;
+                }
+                five --;
+            }
+            if (bill == 20) {
+                int left = 15;
+                if (ten > 0) {
+                    ten --;
+                    left = 5;
+                }
+                if (five < (left/5)){
+                    return false;
+                }
+                five -= (left / 5);
+            }
+        }
+        return true;
+    }
+}
