@@ -1,0 +1,68 @@
+// class Solution {
+//     public boolean buddyStrings(String A, String B) {
+//         A = A.toLowerCase();
+//         B = B.toLowerCase();
+//         if (A.length() != B.length()) {
+//             return false;
+//         }
+//         if (A.equals(B)){
+//             return true;
+//         }
+//         int firstPosition = 0;
+//         int secondPosition = 0;
+//         boolean guess = false;
+//         if (A.charAt(0) != B.charAt(0)) {
+//             firstPosition = 0;
+//             guess = true;
+//         }
+//         for (int i = 0; i < A.length(); i++) {
+//             if (guess == true) {
+//                 if (A.charAt(i) != B.charAt(i) && firstPosition == 0) {
+//                     secondPosition = i;
+//                 }
+//             }
+//             if(guess == false) {
+//                 if (A.charAt(i) != B.charAt(i)) {
+//                     firstPosition = i;
+//                 }
+//                 if (A.charAt(i) != B.charAt(i) && firstPosition != 0) {
+//                     secondPosition = i;
+//                 }
+//             }
+//         }
+//         if (A.charAt(firstPosition) == B.charAt(secondPosition) && A.charAt(secondPosition) == B.charAt(firstPosition)) {
+//             return true;
+//         }
+//         return false;
+//     }
+// }
+
+class Solution {    
+    public boolean buddyStrings(String A, String B) {
+        if (A.length() != B.length())
+            return false;
+
+        if (A.equals(B)) {
+            Set set = new HashSet();
+            for (int i = 0; i < A.length(); i++) {
+                if (set.contains(A.charAt(i)))
+                    return true;
+                else set.add(A.charAt(i));
+            }
+            return false;
+        }
+
+        int counter = 0;
+        int aChars = 0;
+        int bChars = 0;
+        for (int i = 0; i < A.length(); i++) {
+            aChars += A.charAt(i);
+            bChars += B.charAt(i);
+            if (A.charAt(i) != B.charAt(i))
+                counter++;
+            if (counter > 2)
+                return false;
+        }
+        return aChars == bChars;
+    }
+}
