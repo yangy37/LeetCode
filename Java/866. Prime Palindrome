@@ -1,4 +1,4 @@
-class Solution {https://github.com/yangy37/LeetCode
+class Solution {
     public int primePalindrome(int N) {
         while (true) {
             if (N == reverse(N) && isPrime(N))
