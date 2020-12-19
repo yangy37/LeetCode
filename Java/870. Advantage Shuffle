@@ -1,0 +1,59 @@
+// class Solution {
+//     public int[] advantageCount(int[] A, int[] B) {
+//         int[] result = new int[A.length];
+//         Map<Integer, List<Integer>> map = new HashMap<>();
+//         Arrays.sort(A);
+//         List<Integer> list = new ArrayList<>();
+//         for (int a : A){
+//             list.add(a);
+//         }
+//         for (int i= 0; i < B.length;i++){
+//             if (B[i] < list.get(0) || B[i] >= list.get(list.size() - 1)){
+//                 result[i] = list.get(0);
+//                 list.remove(0);
+//             }
+//             else {
+//                 for (int e : list){
+//                     if (e > B[i]){
+//                         result[i] = e;
+//                         break;
+//                     }
+//                 }
+//                 list.remove(list.indexOf(result[i]));
+//             }
+//         }
+//         return result;
+//     }
+// }
+
+class Solution {
+    public int[] advantageCount(int[] A, int[] B) {
+        Arrays.sort(A);//quick sort O(log(n))
+        List<Integer> aList= new ArrayList<>();
+        int [] result = new int[A.length];
+        int index=0;
+        for (int i : A){
+            aList.add(i);
+        }
+        for(int i : B) {
+            //binary search
+            int begin=0,end=aList.size()-1;
+            while (end>=begin) {
+                int mid=(begin+end)/2;
+                if ( i >= aList.get(mid)){
+                    begin=mid+1;
+                }
+                else if ( i < aList.get(mid)) {
+                    end=mid-1;
+                }
+                else {
+                    break;
+                }
+            }
+            result[index]=aList.get((begin==aList.size())?0:begin);
+            aList.remove((begin==aList.size())?0:begin);
+            index++;
+            }
+        return result;
+    }
+}
