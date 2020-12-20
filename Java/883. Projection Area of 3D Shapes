@@ -27,3 +27,6 @@ class Solution {
         return top + front + side;
     }
 }
+
+
+//https://www.cnblogs.com/grandyang/p/10865485.html
