@@ -1,0 +1,29 @@
+class Solution {
+    public int projectionArea(int[][] grid) {        
+        int top = 0, front = 0, side = 0;
+        int[] sideMax = new int[grid[0].length];
+        for(int[] g1 : grid) {
+            int frontMax = 0;
+            for(int i = 0; i<g1.length; i++){
+                int g2 = g1[i];
+				//as long as there is value, increase top
+                if(g2 > 0) {
+                    top++;
+                }
+				//front is checking which is higher for each element
+                frontMax = Math.max(frontMax, g2);
+				
+				//side is checking which is higher for each position
+                sideMax[i] = Math.max(sideMax[i], g2);
+            }
+            
+            front += frontMax;
+            
+        }
+        
+        for(int i: sideMax) {
+            side += i;
+        }
+        return top + front + side;
+    }
+}
