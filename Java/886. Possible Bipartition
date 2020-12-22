@@ -1,0 +1,67 @@
+class Solution {
+
+    int[]color; //By default:0 means not visited and then alternate between 1 and -1
+    List<Integer>[]edges;
+    
+    public boolean possibleBipartition(int N, int[][] dislikes) {
+
+        edges = new ArrayList[N+1];
+        color = new int[N+1];
+        
+        for (int i=0; i <=N; i++)
+            edges[i] = new ArrayList();
+        
+        for(int i=0;i<dislikes.length;i++)
+        {
+            edges[dislikes[i][0]].add(dislikes[i][1]); //bi directional edges. If a dislikes b.
+            edges[dislikes[i][1]].add(dislikes[i][0]); //then b dislikes a as well.
+        }
+        
+        for (int i=1; i<=N; i++) //for each node/person check using BFS/DFS
+            if(color[i]==0 && !DFS(i,1)) //change this to " if(color[i]==0 && !BFS(i)) " to run with BFS
+                return false;
+        
+        return true;
+    }
+    
+    private boolean BFS(int i)
+    {
+        Queue<Integer>q = new LinkedList();
+        q.offer(i);
+        color[i]=1;
+        
+        while(!q.isEmpty())
+        {
+            int parent = q.poll();
+            int c=color[parent];
+            for(int child:edges[parent])
+            {
+                if(color[child]==c)
+                    return false;
+                
+                if(color[child]==0)
+                {
+                    color[child]=-c;
+                    q.offer(child);
+                }
+            }
+
+        }
+        return true;
+    }
+    
+    private boolean DFS(int parent, int c) {
+        
+        if (color[parent] != 0)
+            return color[parent] == c;
+        
+        color[parent]=c;
+        List<Integer> list = edges[parent];
+        
+        for(int child:list)
+            if(!DFS(child,-c))
+                return false;
+        
+        return true;
+    }
+}
