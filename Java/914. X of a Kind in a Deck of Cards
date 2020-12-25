@@ -1,0 +1,37 @@
+class Solution {
+    public boolean hasGroupsSizeX(int[] deck) {
+       // Array.sort(deck,0,deck.length);
+        //直接用hashTable来统计个数就好了
+        if(deck.length==0)
+            return true;
+        Map<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<deck.length;i++){
+            if(map.get(deck[i])==null){
+                map.put(deck[i],1);
+            }else{
+                map.put(deck[i],map.get(deck[i])+1);
+            }
+        }
+       int min=map.get(deck[0]);
+        for(Integer key:map.keySet()){
+            if(map.get(key)<2)
+             return false;
+           else{
+               if(map.get(key)<min)
+                min=map.get(key);
+           }
+        }
+        for(int i=2;i<=min;i++){
+            boolean success=true;
+            for(Integer key1:map.keySet()){
+                if(map.get(key1)%i!=0){
+                    success=false;
+                    break;
+                }
+            }
+            if(success) return true;
+        }
+        
+        return false;
+    }
+}
