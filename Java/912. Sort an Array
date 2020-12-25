@@ -1,0 +1,47 @@
+class Solution {
+
+     public int partitionQuickSort(int l,int h,int[] nums)
+{
+    int i=l,j=h;
+    int pivotIndex=(h+l)/2;
+    int pivot=nums[pivotIndex];
+    while(i<j)
+    {
+        //(nums[i]==pivot && i==pivotIndex) :  condition to handle duplicates
+        //i<h : to handle overflow and underflow
+		
+        while((nums[i]<pivot||(nums[i]==pivot && i==pivotIndex))&& i<h)
+					i++;   //doesn't increment for duplicates, increment for pivot element
+        while((nums[j]>pivot || (nums[j]==pivot && i!=pivotIndex)) && j>l)
+					j--;    //decrement for duplicates, doesn't decrement for pivot element
+        
+        if(i<j)
+        {
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
+        }
+        
+    }
+    if(i<=j)
+    {
+    int temp=nums[pivotIndex];
+    nums[pivotIndex]=nums[j];
+    nums[j]=temp;
+    }
+   return j;
+}
+public int[] QuickSort(int[] nums, int l, int h) 
+{
+ if(l<h)
+ {
+     int pivotIndex=partitionQuickSort(l,h,nums);
+     QuickSort(nums,l,pivotIndex);
+     QuickSort(nums,pivotIndex+1,h);
+ }
+ return nums;
+}
+public int[] sortArray(int[] nums) {
+return QuickSort(nums,0,nums.length-1);
+}
+}
