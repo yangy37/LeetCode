@@ -1,0 +1,38 @@
+class Solution {
+    // fast-forward + bitmap
+    // time: O(min(N, 2^K)) where K is the number of bits (cells)
+    // memory: O(min(N, 2^K))
+    public int[] prisonAfterNDays(int[] cells, int N) {
+        final int TOOL = 126; 
+        // initialize
+        int bitmap = 0;
+        for (int cell : cells) {
+            bitmap <<= 1;
+            bitmap += cell;
+        }
+        
+        // fast-forward map
+        Map<Integer, Integer> map = new HashMap();
+
+        while (N > 0) {
+            if (map.containsKey(bitmap)) {// found cycle
+                N %= map.get(bitmap) - N;// jump over as many cycle as possible
+
+                if (N == 0) break;// edge case
+            }
+            // record timestamp
+            map.put(bitmap, N);
+            // next state
+            bitmap = ~(bitmap << 1 ^ bitmap >> 1) & TOOL;// bitwise operation, O(1) time                
+            // update time
+            N --; 
+        }
+
+        for (int i = 7; i >= 0; i --) {
+            cells[i] = bitmap & 1;
+            bitmap >>= 1;
+        }
+        
+        return cells;
+    }
+}
